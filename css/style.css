@@ -78,17 +78,20 @@
     font-size: 1.5rem;
     font-weight: bold;
     padding: 2px;
+
 }
 
 .header ul li a{
-
+    
     color:rgb(255, 255, 255);
     text-decoration: none;
 
 }
 
 .header ul li a .l{
-
+    position: absolute;
+    right: 250px;
+    bottom: 25px;
     transition: 0.3s;
 
 }
@@ -101,6 +104,9 @@
 
 .header ul li a .r {
 
+    position: absolute;
+    right: 120px;
+    bottom: 25px;
     transition: 0.3s;
 
 }
@@ -114,6 +120,29 @@
 .header .navbar {
 
     font-size: 1.2em;
+
+}
+
+.header .navbar input[type="text"] {
+
+    border-radius: 0.5rem;
+
+}
+
+.header .navbar .fa-search {
+
+    width: 50px;
+    height: 35px;
+    border-radius: 0.5rem;
+    background: none;
+    border: none;
+    transition: 0.3s;
+
+}
+
+.header .navbar .fa-search:hover {
+
+    background: #F0B67F;
 
 }
 
@@ -147,14 +176,16 @@
     
 }
 
-.header .icons .fa-shopping-cart {
+.header .icons #cart-btn {
 
+    color: white;
+    text-decoration: none;
     cursor: pointer;
     transition: 0.3s;
 
 }
 
-.header .icons .fa-shopping-cart:hover {
+.header .icons #cart-btn:hover {
 
     color: #F0B67F;
 
@@ -206,7 +237,7 @@
 
 .header .account-box .delete-btn  {
 
-    background: rgb(167, 10, 10);
+    background: rgb(229, 7, 7);
     border-radius: 0.5rem;
     padding: 5px;  
     color: var(--black);
@@ -588,14 +619,39 @@ h1.title {
 
 }
 
-.box-cart .box-showcart .box-input {
+.box-cart .box-payment {
 
-    display: flex;
-    margin-left: auto;
-    margin-right: auto;
+    position: absolute;
+    bottom: 50px;
+    left: 405px;
+    width: 450px;
+    height: 40px;
+    background: white;;
+    border-radius: 0.5rem;
 
 }
 
+.box-cart .box-payment p {
+
+    display: inline-flex;
+    margin-top: 8px;
+    
+}
+
+.box-cart .box-input {
+
+    position: absolute;
+    bottom: 50px;
+    left: 890px;
+
+}
+
+.d {
+
+    position: absolute;
+    left: 990px;
+    bottom: 50px;
+}
 
 @keyframes fadeIn {
     0% {

@@ -27,7 +27,7 @@
             <form action="" method="post">
 
                 <input type="text" name="search" id="search" placeholder="ค้นหา">
-                <button type="submit"><i class="fa fa-search"></i></button>
+                <button type="submit" class="fa fa-search"></button>
 
             </form>
         </nav>
@@ -47,7 +47,7 @@
                 
                 ?>
                 <div id="user-btn" class="fas fa-user"></div>
-                <a href="cart_page.php?id=<?php echo $fetch_cart["user_id"]; ?>"> <i class="fa fa-shopping-cart" style="font-size:30px; color:white;"></i></a>
+                <a href="cart_page.php?id=<?php echo $fetch_cart["user_id"]; ?>" id="cart-btn" class="fa fa-shopping-cart" style="font-size:30px;"> </a>
 
             </div>
 
@@ -62,10 +62,12 @@
 
             </div> 
 
-                <?php else: ?>
-                    <a href="Login.php"><span class="l">Login</span></a>
-                    <a href="Register.php"><span class="r">Register</span></a>
-                <?php endif; ?>
+            <?php else: ?>
+                <ul>
+                <li><a href="Login.php"><span class="l">Login</span></a></li>
+                <li><a href="Register.php"><span class="r">Register</span></a></li>
+                </ul>
+            <?php endif; ?>
                 
         
         

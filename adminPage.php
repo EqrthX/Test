@@ -1,4 +1,5 @@
 <?php 
+    require "connection.php";
 
     session_start();
 
@@ -37,36 +38,60 @@
         <div class="box-container">
 
             <div class="box">
+
                 <h3>A</h3>
                 <p>total pending</p>
+
             </div>
             <div class="box">
-                <h3>A</h3>
 
-                <p>completed payment</p>
-            </div>
-            <div class="box">                
                 <h3>A</h3>
-                
+                <p>completed payment</p>
+
+            </div>
+            <div class="box">    
+
+                <h3>A</h3>
                 <p>order placed</p>
 
             </div>
             <div class="box">
-                <h3>A</h3>
 
+                <h3><?php 
+                
+                $sql = "SELECT * FROM products";
+                $result = mysqli_query($conn, $sql);
+                $number_products = mysqli_num_rows($result);
+                echo $number_products;
+
+                ?></h3>
                 <p>products added</p>
 
             </div>
             <div class="box">
 
-                <h3>A</h3>
+                <h3><?php 
+                
+                    $sql = "SELECT * FROM users WHERE user_type = 'user'";
+                    $result = mysqli_query($conn, $sql);
+                    $number_user = mysqli_num_rows($result);
+                    echo $number_user;
+                
+                ?></h3>
 
                 <p>normal users</p>
 
             </div>
             <div class="box">
 
-                <h3>A</h3>
+                <h3><?php 
+                
+                    $sql = "SELECT * FROM users WHERE user_type = 'admin'";
+                    $result = mysqli_query($conn, $sql);
+                    $number_admin = mysqli_num_rows($result);
+                    echo $number_admin;
+                
+                ?></h3>
 
                 <p>admin users</p>
 

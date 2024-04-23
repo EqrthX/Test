@@ -13,13 +13,13 @@ html,body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-right: auto;
     margin-left: auto;
     margin-bottom: auto;
     background: white;
     width: 40%;
-    border-radius: 25px;
+    border-radius: 5px;
     
 }
 
@@ -31,7 +31,7 @@ html,body {
 
 }
 
-.container input[type=text], input[type=password], input[type=email] {
+.container input[type=text], input[type=password], input[type=email], input[type="number"] {
 
     font-family: "Mali", cursive;
     position: relative;

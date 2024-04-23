@@ -2,6 +2,8 @@
 
     require "connection.php";
 
+    session_start();
+
     $user_id = $_SESSION['user_id'];
 
     if(isset($_GET["id"])) {
@@ -12,11 +14,9 @@
 
         $result_select_del = mysqli_query($conn, $sql);
 
-        $fetch_cart_id = mysqli_fetch_assoc($result_select_del);
-
         if($result_select_del) {
 
-            header("location:Home.php");
+            header("location:cart_page.php");
             exit();
 
         } else {

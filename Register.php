@@ -31,20 +31,23 @@
             <input type="text" name="firstname" id="name" required placeholder="firstname">
             <br>
 
+            
             <input type="text" name="lastname" id="lastname" required placeholder="lastname">
             <br>
-
+            
             <p class="gender">Gender</p>
             <input type="radio" name="gender" id="gender" value="men"><label for="">MEN</label>
             <input type="radio" name="gender" id="gender" value="women"><label for="">WOMEN</label>
             <input type="radio" name="gender" id="gender" value="other"><label for="">OTHER</label>
             <br>
-
+            
             <input type="email" name="email" id="email" required placeholder="email">
             <br>
+            
+            <input type="text" name="tel" required placeholder="telephone">
 
             <input type="submit" value="enter" name="reg">
-
+            
             <p>Already have an account? <span><a href="Login.php">Login now</a></span> </p>
         </form>
 
