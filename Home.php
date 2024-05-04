@@ -166,7 +166,7 @@
         <ul>
 
             <li><a href="Home.php">Home</a></li>
-            <li><a href="">Catagory</a></li>
+            <li><a href="Catagory_Login.php ">Catagory</a></li>
             <li><a href="">About us</a></li>
             <li><a href="">Contact</a></li>
 

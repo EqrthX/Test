@@ -99,6 +99,13 @@
             <label for="description" class="form-label">Description</label>
             <textarea name="description" id="description" cols="5" rows="5" class="form-control"><?php echo $fetech_product["description"]; ?></textarea>
         </div>
+
+        <select name="type" id="type">
+            <option disabled selected>เลือกหมวดหมู่</option>
+            <option value="1">Controller</option>
+            <option value="2">Console</option>
+            <option value="3">Game</option>
+        </select>
         
         <input type="submit" value="update" class="btn btn-primary" name="update">
 

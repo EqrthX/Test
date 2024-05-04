@@ -83,6 +83,14 @@
                                     <option value="3">Nintendo Switch</option>
                                 </select>
 
+                                <label for=""></label>
+                                <select name="type" id="type">
+                                    <option disabled selected>เลือกหมวดหมู่</option>
+                                    <option value="1">Controller</option>
+                                    <option value="2">Console</option>
+                                    <option value="3">Game</option>
+                                </select>
+
                                 <label for="description">รายละเอียดสินค้า</label>
                                 <textarea name="description" id="" cols="20" rows="5"></textarea>
 
@@ -110,50 +118,60 @@
         <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">add pattern</button>
         
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+            <div class="modal-dialog">
 
-            <div class="modal-content">
-                
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">รายละเอียดลายเครื่อง</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body">
-
-                    <form method="post" action="addPattern.php" enctype="multipart/form-data">
-
-                        <div class="mb-3">
-                            <label for="recipient-name" class="col-form-label">ชื่อลาย</label>
-                            <input type="text" class="form-control" id="recipient-name" name="pattern_name">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="message-text" class="col-form-label">Media</label>
-                            <input type="file" name="media" id="media" class="form-control">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for=""></label>
-                            <select name="category_id" id="category_id">
-                                    <option disabled selected>เลือกประเภทสินค้า</option>
-                                    <option value="1">PlayStation</option>
-                                    <option value="2">Xbox</option>
-                                    <option value="3">Nintendo Switch</option>
-                            </select>
-                        </div>
+                <div class="modal-content">
                     
-
-                </div>
-                
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <input type="submit" class="btn btn-primary" name="pattern"></input>
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">รายละเอียดลายเครื่อง</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                    </form>
+                    <div class="modal-body">
+
+                        <form method="post" action="addPattern.php" enctype="multipart/form-data">
+
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">ชื่อลาย</label>
+                                <input type="text" class="form-control" id="recipient-name" name="pattern_name">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Media</label>
+                                <input type="file" name="media" id="media" class="form-control">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for=""></label>
+                                <select name="category_id" id="category_id">
+                                        <option disabled selected>เลือกประเภทสินค้า</option>
+                                        <option value="1">PlayStation</option>
+                                        <option value="2">Xbox</option>
+                                        <option value="3">Nintendo Switch</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for=""></label>
+                                <select name="type" id="type">
+                                        <option disabled selected>เลือกหมวดหมู่</option>
+                                        <option value="1">Controller</option>
+                                        <option value="2">Console</option>
+                                        <option value="3">Game</option>
+                                </select>
+                            </div>
+                        
+
+                    </div>
+                    
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <input type="submit" class="btn btn-primary" name="pattern"></input>
+                        </div>
+
+                        </form>
+                </div>
             </div>
-        </div>
         </div>
         
         <div class="show-contect">
@@ -166,6 +184,7 @@
                         <th scope="col">price</th>
                         <th scope="col">quantity</th>
                         <th scope="col">category</th>
+                        <th scope="col">type</th>
                         <th scope="col">image</th>
                         <th scope="col">status</th>
                         <th scope="col">date</th>
@@ -173,10 +192,11 @@
                 </thead>
 
                 <?php 
-                    
-                    $sql = "SELECT p.product_id, p.product_name, p.price, p.quantity, c.category_name, p.image_url, p.status, p.added_date
+
+                    $sql = "SELECT p.product_id, p.product_name, p.price, p.quantity, c.category_name, t.type_name, p.image_url, p.status, p.added_date
                             FROM products p 
-                            INNER JOIN categories c ON p.category_id = c.category_id";
+                            INNER JOIN categories c ON p.category_id = c.category_id
+                            INNER JOIN type t ON t.type_id = p.type_id";
 
 
                     $result_product = mysqli_query($conn, $sql);
@@ -206,6 +226,10 @@
 
                         <td>
                             <?php echo $fetech_product["category_name"];?>
+                        </td>
+
+                        <td>
+                            <?php echo $fetech_product["type_name"];?>
                         </td>
 
                         <td>

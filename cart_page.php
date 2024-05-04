@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 
 
 </head>
@@ -56,8 +56,9 @@
             ?>
 
                 <div class="box-showcart">
+                
+                    <img src="upload_images/<?php echo $fetch_cart["image"] ?>" alt="product image" style="width:100px; height: 100px;"><br>
                     
-                    <img src="upload_images/<?php echo $fetch_cart["image"] ?>" alt="" style="width:100px; height: 100px;"><br>
                     <p>ชื่อสินค้า: <?php echo $fetch_cart["product_name"] ?></p><br>
                     <p>รหัสสินค้า: <?php echo $fetch_cart["cart_id"] ?></p><br>
                     <p>ราคา: <?php echo $fetch_cart["price"] ?>.00 บาท</p><br>
@@ -75,7 +76,6 @@
 
                     <a href="cart_del.php?id=<?php echo $fetch_cart["cart_id"]; ?>"><i class="fas fa-trash" style="font-size:25px; color:red;" onclick="return confirm('คุณแน่ใจว่าจะลบสินค้าชิ้นนี้')"></i></a><br>
 
-                    
 
                 </div>
                 
@@ -94,7 +94,7 @@
 
             <div class="box-input">
 
-                <input type="submit" value="submit" class="btn btn-success">
+                <input type="submit" value="SUBMIT" class="btn btn-success">
 
             </div>
 

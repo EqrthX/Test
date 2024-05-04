@@ -6,7 +6,7 @@
 
     if(isset($_POST["cart"])) {
 
-        $p_name = $_POST["name"];
+        $p_name = $_POST["product_name"];
 
         $price = $_POST["price"];
 
@@ -24,7 +24,6 @@
 
             header("location:Home.php");
 
-            exit();
 
         } else {
 
@@ -36,7 +35,6 @@
 
             header("location:Home.php");
 
-            exit();
 
         }
 

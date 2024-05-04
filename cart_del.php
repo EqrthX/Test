@@ -17,7 +17,6 @@
         if($result_select_del) {
 
             header("location:cart_page.php");
-            exit();
 
         } else {
 
@@ -29,12 +28,12 @@
 
 
     if(isset($_GET["del_all"])) {
+
         $sql_delAll = "DELETE FROM cart";
         $result_delAll = mysqli_query($conn, $sql_delAll);
         
         if($result_delAll) {
             header("location:Home.php");
-            exit();
         } else {
             echo "การลบข้อมูลผิดพลาด";
         }

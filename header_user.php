@@ -23,17 +23,26 @@
         ?>
 
 
-        <nav class="navbar">        
-            <form action="" method="post">
+        <nav class="navbar">       
+            
+            <?php if(isset($user_id)) {?>
+            <form action="search_Login.php" method="post">
 
-                <input type="text" name="search" id="search" placeholder="ค้นหา">
-                <button type="submit" class="fa fa-search"></button>
+                <input type="text" name="keyword" id="keyword" placeholder="ค้นหา">
+                <button type="submit" name="submit" class="fa fa-search"></button>
 
             </form>
-        </nav>
+            <?php }?>
 
-        
-        
+            <?php if(!isset($user_id)) {?>
+            <form action="search.php" method="post">
+
+                <input type="text" name="keyword" id="keyword" placeholder="ค้นหา">
+                <button type="submit" name="submit" class="fa fa-search"></button>
+
+            </form>
+            <?php }?>
+        </nav>
         
             <?php if(isset($user_id)): ?>
 
@@ -68,8 +77,5 @@
                 <li><a href="Register.php"><span class="r">Register</span></a></li>
                 </ul>
             <?php endif; ?>
-                
-        
-        
-        
+
     </section>

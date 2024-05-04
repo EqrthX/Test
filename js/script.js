@@ -1,4 +1,5 @@
 let accountBox = document.querySelector(".header .account-box");
+let popup = document.getElementById('popup');
 
 document.querySelector("#user-btn").onclick = () => {
 
@@ -6,3 +7,15 @@ document.querySelector("#user-btn").onclick = () => {
     
 }
 
+function openPopup() {
+
+    popup.classList.add('open-popup')
+
+    
+}
+
+function closePopup() {
+
+    popup.classList.remove('open-popup')
+
+}

@@ -12,6 +12,8 @@
 
         $category_id = $_POST["category_id"];
 
+        $type_game = $_POST["type"];
+
         $description = $_POST["description"];
 
         $date = date("Y-m-d", strtotime($_POST["date"]));
@@ -33,7 +35,7 @@
 
         } else {
 
-            $sql = "INSERT INTO products(product_name, description, price, quantity, category_id, image_url, added_date) VALUES('$product_name', '$description', '$product_price', '$product_quantity', '$category_id', '$image', '$date')";            
+            $sql = "INSERT INTO products(product_name, description, price, quantity, category_id, type_id, image_url, added_date) VALUES('$product_name', '$description', '$product_price', '$product_quantity', '$category_id', '$type_game', '$image', '$date')";            
             
             $result_insert = mysqli_query($conn, $sql);
 

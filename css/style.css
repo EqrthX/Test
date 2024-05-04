@@ -5,6 +5,7 @@
     font-family: "Mali", cursive;
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 
 }
 
@@ -312,13 +313,13 @@
 
 .show-curosel {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 #carouselExample, #carouselExampleCaptions{
 
-    width: 50%;
-    height: 85%;
+    width: 45%;
+    height: 50%;
 
 }
 
@@ -337,7 +338,9 @@
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
+
     background-color: black;
+
 }
 
 #carouselExample {
@@ -345,18 +348,19 @@
     position: relative;
     margin-top: 5px;
     margin-left: 0;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     border-radius: 0.5rem;
 }
 
 .carousel-item img {
 
-    max-width: 50%;
-    max-height: 50%;
+    max-width: 45%;
+    max-height: 45%;
     object-fit: contain;
     display: flex;
     margin-left: auto;
     margin-right: auto;
+    height: auto;
     
 }
 
@@ -365,25 +369,26 @@
     position: relative;
     margin-top: 5px;
     margin-left: 20px;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     border-radius: 0.5rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
     padding: 5px;
 
 }
 
 .carousel-inner .carousel-item img {
-    max-width: 50%;
-    max-height: 50%;
+
+    max-width: 45%;
+    max-height: 45%;
     object-fit: contain;
     display: flex;
     margin-left: auto;
     margin-right: auto;
     padding: 5px;
-
+    height: auto;
     
 }
 
-.carousel-caption{
+.carousel-caption {
     
     width: 50%;
     display: flex;
@@ -455,7 +460,7 @@
 
 /* title */
 
-h1.title {
+.title {
 
     text-align: center;
     margin-top: 10px;
@@ -527,8 +532,10 @@ h1.title {
     background: rgb(207, 207, 207);
     max-width: 1000px;
     max-height: 2000px;
+    height: auto;
     margin-left: auto;
     margin-right: auto;
+    border-radius: .5rem;
 
 }
 
@@ -536,8 +543,10 @@ h1.title {
 
     display: flex;
     justify-content: space-around; 
+    align-items: center;
     padding: 20px; /* เพิ่มช่องว่างรอบขอบของกล่อง */
     margin: 20px;
+
 }
 
 .product-box .box-item .arrow{
@@ -563,6 +572,7 @@ h1.title {
     max-width: 250px;
     margin-right: 20px;
     height: auto;
+    border-radius: .5rem;
     
 }
 
@@ -572,12 +582,102 @@ h1.title {
 
 }
 
-.product-box .box-item .box-text form, .btn-danger .btn-success {
+.product-box .box-item .box-text .box-qty {
 
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.product-box .box-item .box-text .qty {
+
+    border-radius: .5rem;
+
+}
+
+.product-box .box-item .box-text #price {
+
+    position: relative;
+    top: 6.5px;
+
+}
+
+.product-box .box-item .box-text .box-input-submit {
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 5px;
+
+}
+
+/* POPUP */
+
+.btn {
+
+    padding: 10px 30px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.2s;
+
+}
+
+.btn:active{
+
+    transform: scale(0.95);
+
+}
+
+.popup {
+
+    width: 400px;
+    background: #fff;
+    border-radius: 6px;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 60px;
+    color: #333;
+    visibility: hidden;
+    transition: all 0.5s ease-in-out;
+    z-index: 5;
+    box-shadow: 0px 0px 0px 5px rgba(100, 100, 111, 0.1);
+
+}
+
+.popup h2 {
+
+    font-size: 38px;
+    font-weight: 500;
+    margin: 30px 0 10px;
+
+}
+
+.popup button {
+
+    width: 100%;
+    margin-top: 50px;
+    padding: 10px 0;
+    background-color: #e02189;
+    color: #fff;
+    border: 0;
+    outline: none;
+    font-size: 18px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+}
+
+.open-popup {
     
-    margin: 3px;
-    display: grid;
-    grid-template-rows: auto auto;
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -20%) scale(1);
 }
 
 /* cart */ 
@@ -646,16 +746,257 @@ h1.title {
 
 }
 
-.d {
+.box-cart p {
 
+    font-size: 14px;
+
+}
+
+.d {
+    
     position: absolute;
     left: 990px;
     bottom: 50px;
 }
 
+/* catagory */
+
+.container-main {
+
+    width: 1000px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+.container-main .container-cat {
+
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+.container-main .container-cat .box-cat {
+
+    box-shadow: 0px 0px 0px 5px rgba(109, 99, 99, 0.7);
+
+}
+
+/* EDIT PROFILE */
+
+.profile-container {
+
+    border: 5px solid #000;
+    max-width: 1400px;
+    max-height: 650px;
+    height: auto;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
 @keyframes fadeIn {
     0% {
       transform: translateY(1rem);
       opacity: 0.2s;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        padding: 0.5rem;
+    }
+
+    .header h1 {
+        font-size: 1.5rem;
+        margin-bottom: 5px;
+        text-align: center;
+    }
+
+    .header ul li {
+        display: block;
+        text-align: center;
+        margin: 5px 0;
+    }
+
+    .header ul li a .l,
+    .header ul li a .r {
+        position: static;
+        display: block;
+        margin: 5px auto;
+        right: auto;
+        bottom: auto;
+    }
+
+    .header .navbar {
+        font-size: 1em;
+    }
+
+    .header .navbar input[type="text"] {
+        width: 70%;
+    }
+
+    .header .navbar .fa-search {
+        width: 40px;
+        height: 30px;
+    }
+
+    .show-curosel {
+        flex-direction: column;
+    }
+
+    #carouselExample,
+    #carouselExampleCaptions {
+        width: 100%;
+        height: 300px;
+        order: 2;
+        margin-top: 10px;
+    }
+
+    #carouselExampleCaptions {
+        margin-top: 10px;
+        margin-left: 0;
+        width: 90%;
+    }
+
+    .carousel-inner .carousel-item img {
+        max-width: 100%;
+        max-height: 100%;
+        height: auto;
+    }
+
+    .menu ul li {
+        font-size: 16px;
+    }
+
+    .show-product .container {
+        grid-template-columns: repeat(2, auto);
+    }
+
+    .product-box .box-item {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .product-box .box-item img {
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .product-box .box-item .box-text {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .product-box .box-item .box-text .box-input-submit {
+        margin-top: 10px;
+    }
+
+    .btn {
+        padding: 8px 25px;
+        font-size: 14px;
+    }
+
+    .popup {
+        width: 90%;
+        padding: 0 20px 40px;
+    }
+
+    .popup h2 {
+        font-size: 28px;
+        margin: 20px 0 10px;
+    }
+
+    .box-cart {
+        width: 95%;
+        height: auto;
+    }
+
+    .box-cart .box-payment {
+        width: 90%;
+        left: 5%;
+    }
+
+    .box-cart .box-input {
+        left: 80%;
+    }
+
+    .d {
+        left: 85%;
+    }
+}
+
+/* เหมาะสำหรับหน้าจอขนาดกลาง */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .header ul li a .l,
+    .header ul li a .r {
+        right: 180px;
+    }
+
+    .header .navbar input[type="text"] {
+        width: 200px;
+    }
+
+    .show-curosel {
+        flex-direction: row;
+    }
+
+    #carouselExample,
+    #carouselExampleCaptions {
+        width: 45%;
+        height: 50%;
+        order: 1;
+    }
+
+    #carouselExampleCaptions {
+        margin-left: 20px;
+        width: 45%;
+    }
+
+    .carousel-inner .carousel-item img {
+        max-width: 45%;
+        max-height: 45%;
+    }
+
+    .menu ul li {
+        font-size: 18px;
+    }
+
+    .show-product .container {
+        grid-template-columns: repeat(3, auto);
+    }
+
+    .product-box .box-item img {
+        max-width: 200px;
+    }
+
+    .popup {
+        width: 400px;
+    }
+
+    .box-cart {
+        width: 750px;
+        height: 550px;
+    }
+
+    .box-cart .box-payment {
+        width: 450px;
+        left: 405px;
+    }
+
+    .box-cart .box-input {
+        left: 890px;
+    }
+
+    .d {
+        left: 990px;
     }
 }

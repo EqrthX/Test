@@ -51,7 +51,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
@@ -185,12 +185,13 @@
 
             $id = $_GET["id"];
 
-            $sql = "SELECT * FROM products WHERE product_id = $id";
+            $sql = "SELECT products.*, categories.category_name FROM products 
+            INNER JOIN categories ON products.category_id = categories.category_id
+            WHERE products.product_id = $id";
 
             $result = mysqli_query($conn, $sql);
 
             if($result && mysqli_num_rows($result) > 0) {
-                
                 
                 while($fetch_product = mysqli_fetch_assoc($result)) {
 
@@ -207,11 +208,13 @@
                                 <div class="box-item">
 
                                     <a href="Home.php" class="arrow">&#x2190;</a>
+
                                         <input type="hidden" name="product_id" value="<?php echo $fetch_product["product_id"]; ?>">
 
                                         <div class="box-img">
 
                                             <img src="upload_images/<?php echo $fetch_product["image_url"]; ?>" alt="">
+                                            <input type="hidden" name="images" value="<?php echo $fetch_product["image_url"]; ?>">
 
                                         </div>
 
@@ -219,22 +222,52 @@
 
                                             <h2 ><?php echo $fetch_product["product_name"] ?></h2>
 
-                                            <p ><?php echo $fetch_product["price"]; ?> บาท</p>
+                                            <input type="hidden" name="product_name" id="product_name" value="<?php echo $fetch_product["product_name"]; ?>">
 
-                                            <p class="des"><?php echo $fetch_product["description"]; ?> </p>
-
-                                            <input type="number" value="1" min="1" name="qty"/>
-
-                                            <input type="hidden" name="name" value="<?php echo $fetch_product["product_name"]; ?>">
-
-                                            <input type="hidden" name="price" value="<?php echo $fetch_product["price"]; ?>">
-
-                                            <input type="hidden" name="images" value="<?php echo $fetch_product["image_url"]; ?>">
+                                            <p class="brand-name">แบรนด์ : <?php echo $fetch_product["category_name"]; ?> | Product ID :  <?php 
                                             
-                                            <input type="submit" value="add to cart" name="cart" class="btn btn-danger">
-                                    
-                                            <input type="submit" value="buy now" name="buy" class="btn btn-success">
+                                                if($fetch_product["category_name"] === "PlayStation") {
 
+                                                    echo "S" . $fetch_product["product_id"]; 
+
+                                                } else if($fetch_product["category_name"] === "Xbox") {
+
+                                                    echo "X" . $fetch_product["product_id"];
+
+                                                } else if($fetch_product["category_name"] === "Nintendo Switch") {
+
+                                                    echo "NS" . $fetch_product["product_id"];
+
+                                                }
+
+                                            ?></p> 
+
+                                            <p class="des"><?php echo substr($fetch_product["description"], 0, 271); ?> </p>
+                                            
+                                            <div class="box-pattern">
+
+                                                
+
+                                            </div>
+
+                                            <div class="box-qty">
+
+                                                <input type="number" value="1" min="1" name="qty"/>
+
+                                                <p id="price"><?php echo $fetch_product["price"]; ?> บาท</p>
+
+                                                <input type="hidden" name="price" value="<?php echo $fetch_product["price"]; ?>">
+
+                                            </div>
+
+                                            <div class="box-input-submit">
+                                                
+                                                <input type="submit" value="add to cart" name="cart" class="btn btn-danger">
+                                        
+                                                <input type="submit" value="buy now" name="buy" class="btn btn-success">
+
+                                            </div>
+                                            
                                         </div>
 
                                 </div>

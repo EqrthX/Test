@@ -37,7 +37,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+
+    <title>product</title>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    
@@ -156,7 +158,7 @@
         <ul>
 
             <li><a href="Home_Visitor.php">Home</a></li>
-            <li><a href="">Catagory</a></li>
+            <li><a href="Catagory.php">Catagory</a></li>
             <li><a href="">About us</a></li>
             <li><a href="">Contact</a></li>
 
@@ -176,10 +178,12 @@
 
             $id = $_GET["id"];
 
-            $sql = "SELECT * FROM products WHERE product_id = $id";
+            $sql = "SELECT products.*, categories.category_name FROM products 
+            INNER JOIN categories ON products.category_id = categories.category_id
+            WHERE products.product_id = $id";
 
             $result = mysqli_query($conn, $sql);
-
+            
             if($result && mysqli_num_rows($result) > 0) {
 
                 while($fetch_product = mysqli_fetch_assoc($result)) {
@@ -193,7 +197,6 @@
 
                                 <div class="box-item">
 
-                          
                                     <a href="Home_Visitor.php" class="arrow">&#x2190;</a>
 
                                         <div class="box-img">
@@ -205,16 +208,65 @@
                                         <div class="box-text">
 
                                             <h2><?php echo $fetch_product["product_name"] ?></h2>
+                                            
+                                            <p class="brand-name">แบรนด์ : <?php echo $fetch_product["category_name"]; ?> | Product ID :  <?php 
+                                            
+                                                if($fetch_product["category_name"] === "PlayStation") {
 
-                                            <p><?php echo $fetch_product["price"]; ?> บาท</p>
+                                                    echo "S" . $fetch_product["product_id"]; 
+
+                                                } else if($fetch_product["category_name"] === "Xbox") {
+
+                                                    echo "X" . $fetch_product["product_id"];
+
+                                                } else if($fetch_product["category_name"] === "Nintendo Switch") {
+
+                                                    echo "NS" . $fetch_product["product_id"];
+
+                                                }
+
+                                            ?></p> 
 
                                             <p class="des"><?php echo $fetch_product["description"]; ?> </p>
-
-                                            <input type="number" value="1" min="1" name="qty"/>
                                             
-                                            <input type="submit" value="add to cart" name="cart" class="btn btn-danger">
-                                    
-                                            <input type="submit" value="buy now" name="buy" class="btn btn-success">
+                                            <div class="box-pattern">
+
+                                                <div class="pattern">
+                                                    
+                                                    <button type="submit" name="pattern">
+                                                        none
+                                                    </button>
+
+                                                </div>
+
+                                            </div>
+
+                                            <div class="box-qty">
+
+                                                <input type="number" value="1" min="1" name="qty"/>
+
+                                                <p id="price"><?php echo $fetch_product["price"]; ?> บาท</p>
+
+                                            </div>
+
+                                            <div class="box-input-submit">
+                                                
+                                                <button type="submit" name="cart" class="btn btn-danger" onclick="openPopup()">เพิ่มสินค้าลงตะกร้า</button>
+                                                
+                                                <div class="popup" id="popup">
+                                                    <h2>Warning</h2>
+                                                    <p>คุณต้องสมัครสมาชิกก่อนถึงจะซื้อสินค้าได้</p>
+                                                    <button type="button" onclick="closePopup()">OK</button>
+                                                </div>
+
+                                                <button type="submit" value="buy now" name="buy" class="btn btn-success" onclick="openPopup()">ซื้อเลย</button>
+                                                <div class="popup" id="popup">
+                                                    <h2>Warning</h2>
+                                                    <p>คุณต้องสมัครสมาชิกก่อนถึงจะซื้อสินค้าได้</p>
+                                                    <button type="button" onclick="closePopup()">OK</button>
+                                                </div>
+                                                
+                                            </div>
 
                                         </div>
 
@@ -239,7 +291,7 @@
     
     ?>
 
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 
 </body>
 </html>
