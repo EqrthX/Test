@@ -39,7 +39,15 @@
 
             <div class="box">
 
-                <h3>A</h3>
+                <h3><?php 
+                
+                    $sql = "SELECT * FROM orders_complete WHERE status = 'รอดำเนินการ'";
+                    $result = mysqli_query($conn, $sql);
+                    $number = mysqli_num_rows($result);
+                    echo $number;
+                    
+
+                ?></h3>
                 <p>total pending</p>
 
             </div>

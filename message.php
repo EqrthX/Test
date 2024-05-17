@@ -356,34 +356,6 @@ if (!empty($name) && !empty($email) && !empty($phone) && !empty($subject) && !em
         
     }
 
-    function showImagesCarousel() {
-
-        $image_folder = 'upload_images/';
-            
-        $images = glob($image_folder . '*');
-            
-        if ($images) {
-
-            $active = 'active';
-
-            foreach ($images as $image) {
-                ?>
-
-                <div class="carousel-item <?php echo $active ?>">
-
-                    <img src="<?php echo $image ?>" class="d-block w-100" alt="...">
-
-                </div>
-
-                <?php
-
-                $active = '';
-
-            }
-        }
-
-    }
-
 ?>
 
 <?php require 'header_user.php'; ?>
